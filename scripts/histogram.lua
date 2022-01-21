@@ -14,13 +14,14 @@ function Initialize()
     meterWidth = SELF:GetNumberOption('Width',10) 
     barWidth = SELF:GetNumberOption('BarWidth',1)
     currentPath = SELF:GetOption('CurrentPath')
-	print(yStrt)
 
 	meterName = SELF:GetName()
 	
 	-- Gets the width of the histogram and divides that by the size of one bar 
 	-- (including a gap) to get the number of bars in the histogram
 	numBars = math.floor(meterWidth / (gap + barWidth)) + 1
+	leftover = meterWidth - (numBars - 1) * (gap + barWidth)
+	print(leftover)
 	
 	measure = SKIN:GetMeasure(SELF:GetOption('Msr'))
 
@@ -85,7 +86,6 @@ function Update()
 				currentBarWidth = barWidth - math.min(cnt + 1, barWidth)
 			else
 				currentBarWidth = math.min(cnt + 1, barWidth)
-				Meters[i]:SetX(x - 1)
 			end
 		else
 			currentBarWidth = barWidth
@@ -101,10 +101,10 @@ function Update()
 				Meters[i]:SetX(0)
 			end
 		else
-			if ((cnt + 1) > barWidth and i == numBars and currentBarWidth == barWidth) then
+			if ((cnt + 1) > barWidth and i == 1 and currentBarWidth == 0) then
 				Meters[i]:SetX(x - 1)
 			elseif (i == numBars and currentBarWidth == 1) then
-				Meters[i]:SetX(meterWidth - 2)
+				Meters[1]:SetX(0)
 			end
 		end
 
