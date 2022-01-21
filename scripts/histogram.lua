@@ -13,6 +13,10 @@ function Initialize()
 	yStrt = SELF:GetOption('Ystart')
     meterWidth = SELF:GetNumberOption('Width',10) 
     barWidth = SELF:GetNumberOption('BarWidth',1)
+    currentPath = SELF:GetOption('CurrentPath')
+	print(yStrt)
+
+	meterName = SELF:GetName()
 	
 	-- Gets the width of the histogram and divides that by the size of one bar 
 	-- (including a gap) to get the number of bars in the histogram
@@ -20,23 +24,24 @@ function Initialize()
 	
 	measure = SKIN:GetMeasure(SELF:GetOption('Msr'))
 
-	maxBars = 100
+	-- Create temp meter file if it doesn't exist
+	tempFile = currentPath .. 'temp.inc'
+	local f = io.open(tempFile, 'w')
+	f:close()
+
+	-- Counter for time steps
 	cnt = 0
 
-	for i=1,maxBars do
-		SKIN:Bang('!WriteKeyValue',i,'Hidden',1)
-	end
-	
 	for i=1,numBars do
-		SKIN:Bang('!WriteKeyValue',i,'Meter','IMAGE')
-		SKIN:Bang('!WriteKeyValue',i,'MeterStyle','sBar')
-		SKIN:Bang('!WriteKeyValue',i,'Hidden',0)
-		Meters[i] = SKIN:GetMeter(i)
+		SKIN:Bang('!WriteKeyValue',meterName .. '_' .. i,'Meter','IMAGE',tempFile)
+		SKIN:Bang('!WriteKeyValue',meterName .. '_' .. i,'MeterStyle','sBar',tempFile)
+		Meters[i] = SKIN:GetMeter(meterName .. '_' .. i)
 		Values[i] = 0
 	end
+
 	-- makes the X/Y of the first meter different (histogram 'start' position)
-	SKIN:Bang('!WriteKeyValue',1,'X',xStrt)
-	SKIN:Bang('!WriteKeyValue',1,'Y',yStrt)
+	SKIN:Bang('!WriteKeyValue',meterName .. '_' .. 1,'X',xStrt,tempFile)
+	SKIN:Bang('!WriteKeyValue',meterName .. '_' .. 1,'Y',yStrt,tempFile)
 end
 
 function Update()
@@ -102,6 +107,7 @@ function Update()
 				Meters[i]:SetX(meterWidth - 2)
 			end
 		end
+
 	end
 
 	-- Update counter
