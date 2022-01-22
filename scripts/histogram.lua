@@ -5,7 +5,7 @@ function Initialize()
 	
 	-- grabs the various appearance options
 	gap = SELF:GetNumberOption('Gap',0)
-	height = SELF:GetNumberOption('Height',10) - gap*2
+	height = SELF:GetNumberOption('Height',10)
 	direction = SELF:GetNumberOption('FlipX',0) == 1
 	orient = SELF:GetNumberOption('FlipY',0) == 1
 	aggregate = SELF:GetNumberOption('Aggregate',1)
@@ -13,7 +13,6 @@ function Initialize()
 	yStrt = SELF:GetOption('Ystart')
     meterWidth = SELF:GetNumberOption('Width',10) 
     barWidth = SELF:GetNumberOption('BarWidth',1)
-    currentPath = SELF:GetOption('CurrentPath')
 
 	meterName = SELF:GetName()
 	
@@ -21,11 +20,15 @@ function Initialize()
 	-- (including a gap) to get the number of bars in the histogram
 	numBars = math.floor(meterWidth / (gap + barWidth)) + 1
 	leftover = meterWidth - (numBars - 1) * (gap + barWidth)
-	print(leftover)
+	if leftover > 0 then
+		numBars = numBars + 1
+	end
+	print('Leftover amount: ' .. leftover)
 	
 	measure = SKIN:GetMeasure(SELF:GetOption('Msr'))
 
 	-- Create temp meter file if it doesn't exist
+    currentPath = SELF:GetOption('CurrentPath')
 	tempFile = currentPath .. 'temp.inc'
 	local f = io.open(tempFile, 'w')
 	f:close()
@@ -39,10 +42,6 @@ function Initialize()
 		Meters[i] = SKIN:GetMeter(meterName .. '_' .. i)
 		Values[i] = 0
 	end
-
-	-- makes the X/Y of the first meter different (histogram 'start' position)
-	SKIN:Bang('!WriteKeyValue',meterName .. '_' .. 1,'X',xStrt,tempFile)
-	SKIN:Bang('!WriteKeyValue',meterName .. '_' .. 1,'Y',yStrt,tempFile)
 end
 
 function Update()
@@ -71,10 +70,10 @@ function Update()
 		h = math.ceil(Values[i]*height)
 		-- used b/c Meter:SetH() would not work
 		SKIN:Bang('!SetOption ' .. Meters[i]:GetName() .. ' H ' .. h)
-		-- note: Lua (X and Y or Z) same as C++/Java (X ? Y : Z)
-		Meters[i]:SetY(orient and gap or (height - h + gap))
 
-		x = Meters[i]:GetX()
+		-- note: Lua (X and Y or Z) same as C++/Java (X ? Y : Z)
+		Meters[i]:SetY(orient and yStrt or (height - h + yStrt))
+
 		if (i == 1) then
 			if direction then
 				currentBarWidth = math.min(cnt + 1, barWidth)
@@ -83,7 +82,15 @@ function Update()
 			end
 		elseif (i == numBars) then
 			if direction then
-				currentBarWidth = barWidth - math.min(cnt + 1, barWidth)
+				if leftover > 0 and leftover < barWidth then
+					tempBarWidth = math.min(barWidth, leftover)
+					currentBarWidth = tempBarWidth - math.min(cnt + 1, tempBarWidth)
+				elseif leftover > 0 and leftover >= barWidth then
+					grace = leftover - barWidth
+					currentBarWidth = barWidth - math.min(math.max(0, cnt + 1 - grace), barWidth)
+				else
+					currentBarWidth = barWidth - math.min(cnt + 1, barWidth)
+				end
 			else
 				currentBarWidth = math.min(cnt + 1, barWidth)
 			end
@@ -98,13 +105,13 @@ function Update()
 			if ((cnt + 1) > barWidth and i == 1 and currentBarWidth == barWidth) then
 				Meters[i]:SetX(x + 1)
 			elseif (i == 1 and currentBarWidth == 1) then
-				Meters[i]:SetX(0)
+				Meters[i]:SetX(xStrt)
 			end
 		else
 			if ((cnt + 1) > barWidth and i == 1 and currentBarWidth == 0) then
 				Meters[i]:SetX(x - 1)
 			elseif (i == numBars and currentBarWidth == 1) then
-				Meters[1]:SetX(0)
+				Meters[1]:SetX(xStrt)
 			end
 		end
 
