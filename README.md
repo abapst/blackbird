@@ -17,7 +17,7 @@ You need to install [Rainmeter](https://www.rainmeter.net/) for Windows 10.
 
 ## Installation
 
-
-Clone repo into your Documents\Rainmeter\Skins folder.
+1. Clone repo into your Documents\Rainmeter\Skins folder.
+2. Open up Rainmeter, load the skins under 'blackbird' and rearrange them however you wish.
 
 Note: for the smooth histograms to work, you need to refresh the skins once after loading because the lua script generates automatic skins that need to be reloaded to function properly. Haven't figured out a way around this yet.
