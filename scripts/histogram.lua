@@ -1,3 +1,5 @@
+-- Copyright 2022 Aleksander Bapst
+
 function Initialize()
 	-- Tables to hold the meter handles and the 'h' for each meter
 	Meters = {}		
