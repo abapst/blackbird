@@ -17,6 +17,10 @@ function Initialize()
 
 	meterName = SELF:GetName()
 	firstUpdate = false
+
+	updateReturnValueFreq=16
+	updateReturnValueCnt=0
+	lastReturnValue=0
 	
 	-- Gets the width of the histogram and divides that by the size of one bar 
 	-- (including a gap) to get the number of bars in the histogram
@@ -129,5 +133,10 @@ function Update()
 	-- Update counter
 	cnt = (cnt + 1) % (barWidth + gap)
 
-	return math.floor(Values[1]*100)	-- could use this value in skin (not currently implemented)
+	-- Update return value counter at different frequency
+	updateReturnValueCnt = (updateReturnValueCnt + 1) % updateReturnValueFreq
+	if updateReturnValueCnt == 0 then
+		lastReturnValue = math.floor(Values[1]*100)
+	end
+	return lastReturnValue
 end
