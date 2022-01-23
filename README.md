@@ -9,7 +9,12 @@ I wasn't satisfied with a lot of the jerky-looking animated meters out there and
 
 ![desktop](https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/desktop.jpg)
 
+## Requirements
+
+You need to install [Rainmeter](https://www.rainmeter.net/) for Windows 10.
+
 ## Installation
+
 
 Clone repo into your Documents\Rainmeter\Skins folder.
 
