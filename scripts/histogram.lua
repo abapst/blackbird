@@ -7,14 +7,16 @@ function Initialize()
 	gap = SELF:GetNumberOption('Gap',0)
 	height = SELF:GetNumberOption('Height',10)
 	direction = SELF:GetNumberOption('FlipX',0) == 1
-	orient = SELF:GetNumberOption('FlipY',0) == 1
+	flipY = SELF:GetNumberOption('FlipY',0) == 1
 	aggregate = SELF:GetNumberOption('Aggregate',1)
 	xStrt = SELF:GetOption('Xstart')
 	yStrt = SELF:GetOption('Ystart')
     meterWidth = SELF:GetNumberOption('Width',10) 
     barWidth = SELF:GetNumberOption('BarWidth',1)
+    barStyle = SELF:GetOption('BarStyle')
 
 	meterName = SELF:GetName()
+	firstUpdate = false
 	
 	-- Gets the width of the histogram and divides that by the size of one bar 
 	-- (including a gap) to get the number of bars in the histogram
@@ -23,13 +25,15 @@ function Initialize()
 	if leftover > 0 then
 		numBars = numBars + 1
 	end
-	print('Leftover amount: ' .. leftover)
+	print(meterName .. ' leftover amount: ' .. leftover)
+	print(meterName .. ' numBars: ' .. numBars)
 	
 	measure = SKIN:GetMeasure(SELF:GetOption('Msr'))
 
 	-- Create temp meter file if it doesn't exist
     currentPath = SELF:GetOption('CurrentPath')
-	tempFile = currentPath .. 'temp.inc'
+	os.execute("mkdir " .. currentPath .. '\\temp')
+	tempFile = currentPath .. '\\temp\\temp_' .. meterName .. '.inc'
 	local f = io.open(tempFile, 'w')
 	f:close()
 
@@ -38,13 +42,19 @@ function Initialize()
 
 	for i=1,numBars do
 		SKIN:Bang('!WriteKeyValue',meterName .. '_' .. i,'Meter','IMAGE',tempFile)
-		SKIN:Bang('!WriteKeyValue',meterName .. '_' .. i,'MeterStyle','sBar',tempFile)
+		SKIN:Bang('!WriteKeyValue',meterName .. '_' .. i,'MeterStyle',barStyle,tempFile)
 		Meters[i] = SKIN:GetMeter(meterName .. '_' .. i)
 		Values[i] = 0
 	end
 end
 
 function Update()
+	if (table.getn(Meters) == 0) then
+		if not firstUpdate then print('Failed to initialize meters, ' .. meterName .. ' will not update.') end
+		firstUpdate = true
+		return 0
+	end
+
 	currentValue = measure:GetRelativeValue()
 
 	if (cnt == 0) then
@@ -72,7 +82,7 @@ function Update()
 		SKIN:Bang('!SetOption ' .. Meters[i]:GetName() .. ' H ' .. h)
 
 		-- note: Lua (X and Y or Z) same as C++/Java (X ? Y : Z)
-		Meters[i]:SetY(orient and yStrt or (height - h + yStrt))
+		Meters[i]:SetY(flipY and yStrt or (height - h + yStrt))
 
 		if (i == 1) then
 			if direction then
@@ -114,7 +124,6 @@ function Update()
 				Meters[1]:SetX(xStrt)
 			end
 		end
-
 	end
 
 	-- Update counter
