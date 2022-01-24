@@ -1,9 +1,3 @@
-[Rainmeter]
-BackgroundMode=1
-Update=33
-DynamicWindowSize=1
-Author=PapaBear
-
 [Variables]
 img=#@#images\blue_sarinth.png
 logocolor=255,255,255,255
@@ -18,7 +12,7 @@ H=121
 Measure=Calc
 Formula=Counter %150
 
-[METERspinningflower]
+[MeterSpinningFlower]
 Meter=Rotator
 MeasureName=MeasureTime
 X=0

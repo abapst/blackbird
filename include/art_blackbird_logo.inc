@@ -1,12 +1,7 @@
-[Rainmeter]
-DynamicWindowSize=1
-Author=abapst
-
 [Variables]
 logocolor=255,255,255,200
-HFlogo=#CURRENTPATH#HF1.png
 
-[MeterDeskmode1]
+[MeterGiantLabel]
 Meter=STRING
 X=867
 Y=0
