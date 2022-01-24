@@ -8,8 +8,10 @@ Drive3Label=BACKUP
 logocolor=255,255,255,255
 fillcolor=255,80,0,255
 ASSETS=#@#images\
+DiskDrives_X=0
+DiskDrives_Y=0
 
-[Background]
+[DiskDrivesBackground]
 Meter=IMAGE
 SolidColor=0, 0, 0, 1
 ImageName=#@#images\background.png
@@ -19,11 +21,13 @@ MouseOverAction=[!SetOption #CURRENTSECTION# ImageAlpha 100][!UpdateMeter #CURRE
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ImageAlpha 1][!UpdateMeter #CURRENTSECTION#][!Redraw]
 W=300
 H=140
+X=#DiskDrives_X#
+Y=#DiskDrives_Y#
 
-[BottomLine]
+[DiskDrivesBottomLine]
 Meter=IMAGE
-X=10
-Y=130
+X=(10+#DiskDrives_X#)
+Y=(130+#DiskDrives_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
@@ -48,8 +52,8 @@ InvertMeasure=1
 [MeterCBar]
 Meter=Bar
 MeasureName=MeasureCDISK
-X=15
-Y=14
+X=(15+#DiskDrives_X#)
+Y=(14+#DiskDrives_Y#)
 W=6
 H=80
 BarColor=#fillcolor#
@@ -58,8 +62,8 @@ SolidColor=255,255,255,255
 [MeterDBar]
 Meter=Bar
 MeasureName=MeasureDDISK
-X=115
-Y=14
+X=(115+#DiskDrives_X#)
+Y=(14+#DiskDrives_Y#)
 W=6
 H=80
 BarColor=#fillcolor#
@@ -68,8 +72,8 @@ SolidColor=255,255,255,255
 [MeterEBar]
 Meter=Bar
 MeasureName=MeasureEDISK
-X=215
-Y=14
+X=(215+#DiskDrives_X#)
+Y=(14+#DiskDrives_Y#)
 W=6
 H=80
 BarColor=#fillcolor#
@@ -79,16 +83,16 @@ Buttons
 -----------------------------------
 [MeterbuttonCDISK]
 Meter=BUTTON
-X=25
-Y=10
+X=(25+#DiskDrives_X#)
+Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#C_DISK.png
 LeftMouseDownAction=!Execute ["C:\"]
 
 [MeterlabelCDISK]
 Meter=STRING
-X=10
-Y=94
+X=(10+#DiskDrives_X#)
+Y=(94+#DiskDrives_Y#)
 FontColor=#logocolor#
 StringStyle=BOLD
 FontSize=12
@@ -100,16 +104,16 @@ Prefix="#Drive1Label#"
 
 [MeterbuttonDDISK]
 Meter=BUTTON
-X=125
-Y=10
+X=(125+#DiskDrives_X#)
+Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#D_DISK.png
 LeftMouseDownAction=!Execute ["D:\"]
 
 [MeterlabelDDISK]
 Meter=STRING
-X=110
-Y=94
+X=(110+#DiskDrives_X#)
+Y=(94+#DiskDrives_Y#)
 FontColor=#logocolor#
 StringStyle=NORMAL
 FontSize=12
@@ -121,16 +125,16 @@ Prefix="#Drive2Label#"
 
 [MeterbuttonEDISK]
 Meter=BUTTON
-X=225
-Y=10
+X=(225+#DiskDrives_X#)
+Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#E_DISK.png
 LeftMouseDownAction=!Execute ["E:\"]
 
 [MeterlabelEDISK]
 Meter=STRING
-X=210
-Y=94
+X=(210+#DiskDrives_X#)
+Y=(94+#DiskDrives_Y#)
 FontColor=#logocolor#
 StringStyle=NORMAL
 FontSize=12

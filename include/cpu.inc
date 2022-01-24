@@ -8,12 +8,11 @@ BarWidth=2
 Orange=255,80,0,255
 Gray=200,200,200,255
 White=255,255,255,255
-@Include1=#CurrentPath#temp\temp_mHistogramCPU1.inc
-@Include2=#CurrentPath#temp\temp_mHistogramCPU2.inc
+CPU_X=0
+CPU_Y=0
 
-[Background]
+[CPUBackground]
 Meter=IMAGE
-SolidColor=0, 0, 0, 1
 ImageName=#@#images\background.png
 ScaleMargins=6,6,6,6
 ImageAlpha=1
@@ -21,11 +20,17 @@ MouseOverAction=[!SetOption #CURRENTSECTION# ImageAlpha 100][!UpdateMeter #CURRE
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ImageAlpha 1][!UpdateMeter #CURRENTSECTION#][!Redraw]
 W=#SkinWidth#
 H=#SkinHeight#
+X=#CPU_X#
+Y=#CPU_Y#
 
-[BottomLine]
+;These includes must happen after the background meter is drawn so they are drawn on top
+@Include1=#CurrentPath#temp\temp_mHistogramCPU1.inc
+@Include2=#CurrentPath#temp\temp_mHistogramCPU2.inc
+
+[CPUBottomLine]
 Meter=IMAGE
-X=10
-Y=130
+X=(10+#CPU_X#)
+Y=(130+#CPU_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
@@ -42,8 +47,8 @@ CurrentPath=#CurrentPath#
 Msr=mCPU1
 FlipX=0
 FlipY=0
-Xstart=10
-Ystart=40
+Xstart=(10+#CPU_X#)
+Ystart=(40+#CPU_Y#)
 
 [mHistogramCPU2]
 Measure=Script
@@ -57,8 +62,8 @@ CurrentPath=#CurrentPath#
 Msr=mCPU2
 FlipX=1
 FlipY=1
-Xstart=10
-Ystart=90
+Xstart=(10+#CPU_X#)
+Ystart=(90+#CPU_Y#)
 
 [mCPU1]
 Measure=CPU
@@ -118,32 +123,32 @@ Group=bars
 
 [InnerLine1]
 Meter=IMAGE
-X=10
-Y=70
+X=(10+#CPU_X#)
+Y=(70+#CPU_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
 
 [InnerLine2]
 Meter=IMAGE
-X=10
-Y=90
+X=(10+#CPU_X#)
+Y=(90+#CPU_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
 
 [MiddleDivider]
 Meter=IMAGE
-X=150
-Y=70
+X=(150+#CPU_X#)
+Y=(70+#CPU_Y#)
 W=1
 H=20
 SolidColor=255, 255, 255, 50
 
 [CPU1Label]
 Meter=STRING
-X=145
-Y=69
+X=(145+#CPU_X#)
+Y=(69+#CPU_Y#)
 FontColor=#Orange#
 StringStyle=NORMAL
 FontSize=12
@@ -155,8 +160,8 @@ Prefix="1"
 
 [CPU2Label]
 Meter=STRING
-X=155
-Y=69
+X=(155+#CPU_X#)
+Y=(69+#CPU_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -169,8 +174,8 @@ Prefix="2"
 [CPU1Measurement]
 Meter=STRING
 MeasureName=mHistogramCPU1
-X=100
-Y=69
+X=(100+#CPU_X#)
+Y=(69+#CPU_Y#)
 FontColor=#Orange#
 StringStyle=NORMAL
 FontSize=12
@@ -183,8 +188,8 @@ Postfix="%"
 [CPU2Measurement]
 Meter=STRING
 MeasureName=mHistogramCPU2
-X=200
-Y=69
+X=(200+#CPU_X#)
+Y=(69+#CPU_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -197,8 +202,8 @@ Postfix="%"
 [RAMMeasurement]
 Meter=STRING
 MeasureName=MeasureUsedRAMPercent
-X=10
-Y=15
+X=(10+#CPU_X#)
+Y=(15+#CPU_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -212,8 +217,8 @@ Postfix="%"
 [BatteryMeasurement]
 Meter=STRING
 MeasureName=MeasureBatteryPercent
-X=290
-Y=15
+X=(290+#CPU_X#)
+Y=(15+#CPU_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12

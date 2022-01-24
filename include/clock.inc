@@ -4,8 +4,10 @@ HideAnalogMinutes=1
 HideDecorativeRing=0
 RingYOffset=70
 RingXOffset=60
+clock_X=0
+clock_Y=0
 
-[Background]
+[ClockBackground]
 Meter=IMAGE
 SolidColor=0, 0, 0, 1
 ImageName=#@#images\background.png
@@ -15,11 +17,13 @@ MouseOverAction=[!SetOption #CURRENTSECTION# ImageAlpha 100][!UpdateMeter #CURRE
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ImageAlpha 1][!UpdateMeter #CURRENTSECTION#][!Redraw]
 W=300
 H=140
+X=#clock_X#
+Y=#clock_Y#
 
 [BottomLine]
 Meter=IMAGE
-X=10
-Y=130
+X=(10+#clock_X#)
+Y=(130+#clock_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
@@ -50,8 +54,8 @@ Formula=(MeasureTimeAnalog%43200)/43200
 [MeterAnalogSeconds]
 Meter=ROUNDLINE
 MeasureName=MeasureTimeSeconds
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=50
 LineStart=38
 StartAngle=4.7124
@@ -64,8 +68,8 @@ Solid=1
 [MeterAnalogMinutes]
 Meter=ROUNDLINE
 MeasureName=MeasureTimeMinutes
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=36
 LineStart=24
 StartAngle=4.7124
@@ -79,8 +83,8 @@ Hidden=#HideAnalogMinutes#
 [MeterAnalogHours]
 Meter=ROUNDLINE
 MeasureName=MeasureTimeHours
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=22
 LineStart=10
 StartAngle=4.7124
@@ -93,8 +97,8 @@ Hidden=#HideAnalogHours#
 ;seconds ring background
 [MeterAnalogBG1]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=50
 LineStart=38
 StartAngle=47.55
@@ -106,8 +110,8 @@ Solid=1
 ;seconds ring border
 [MeterAnalogBG2]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=50
 LineStart=48
 StartAngle=47.55
@@ -119,8 +123,8 @@ Solid=1
 ;minutes ring background
 [MeterAnalogBG3]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=36
 LineStart=24
 StartAngle=47.55
@@ -133,8 +137,8 @@ Hidden=#HideAnalogMinutes#
 ;minutes ring border
 [MeterAnalogBG4]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=36
 LineStart=34
 StartAngle=47.55
@@ -147,8 +151,8 @@ Hidden=#HideAnalogMinutes#
 ;hours ring background
 [MeterAnalogBG5]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#))
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=22
 LineStart=10
 StartAngle=47.55
@@ -161,8 +165,8 @@ Hidden=#HideAnalogHours#
 ;hours ring border
 [MeterAnalogBG6]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=22
 LineStart=20
 StartAngle=47.55
@@ -175,8 +179,8 @@ Hidden=#HideAnalogHours#
 ;decorative center circle
 [MeterAnalogBG7]
 Meter=ROUNDLINE
-X=#RingXOffset#
-Y=#RingYOffset#
+X=(#RingXOffset#+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 LineLength=36
 LineStart=24
 StartAngle=47.55
@@ -200,8 +204,8 @@ Format=%H:%M
 [MeterTime]
 MeasureName=MeasureTime
 Meter=STRING
-X=106
-Y=-5
+X=(106+#clock_X#)
+Y=(-5+#clock_Y#)
 FontColor=255, 255, 255, 255
 FontSize=46
 StringAlign=LEFT
@@ -211,8 +215,8 @@ AntiAlias=1
 
 [MeterLine]
 Meter=IMAGE
-X=120
-Y=#RingYOffset#
+X=(120+#clock_X#)
+Y=(#RingYOffset#+#clock_Y#)
 W=165
 H=5
 SolidColor=255, 255, 255, 200
@@ -233,8 +237,8 @@ Format="%B %d, %Y"
 [MeterDate]
 Meter=STRING
 MeasureName=MeasureDate
-X=116
-Y=78
+X=(116+#clock_X#)
+Y=(78+#clock_Y#)
 StringStyle=NORMAL
 StringAlign=LEFT
 FontColor=255, 255, 255, 160
@@ -245,8 +249,8 @@ AntiAlias=1
 [MeterWeekDay]
 Meter=STRING
 MeasureName=MeasureWeek
-X=116
-Y=98
+X=(116+#clock_X#)
+Y=(98+#clock_Y#)
 W=300
 StringStyle=NORMAL
 StringAlign=LEFT

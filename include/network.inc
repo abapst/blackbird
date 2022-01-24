@@ -9,10 +9,10 @@ Orange=255,80,0,255
 Gray=200,200,200,255
 Teal=0,200,255,255
 White=255,255,255,255
-@Include1=#CurrentPath#temp\temp_mHistogramNetworkUp.inc
-@Include2=#CurrentPath#temp\temp_mHistogramNetworkDown.inc
+Network_X=0
+Network_Y=0
 
-[Background]
+[NetworkBackground]
 Meter=IMAGE
 SolidColor=0, 0, 0, 1
 ImageName=#@#images\background.png
@@ -22,11 +22,17 @@ MouseOverAction=[!SetOption #CURRENTSECTION# ImageAlpha 100][!UpdateMeter #CURRE
 MouseLeaveAction=[!SetOption #CURRENTSECTION# ImageAlpha 1][!UpdateMeter #CURRENTSECTION#][!Redraw]
 W=#SkinWidth#
 H=#SkinHeight#
+X=#Network_X#
+Y=#Network_Y#
 
-[BottomLine]
+;These includes must happen after the background meter is drawn so they are drawn on top
+@Include1=#CurrentPath#temp\temp_mHistogramNetworkUp.inc
+@Include2=#CurrentPath#temp\temp_mHistogramNetworkDown.inc
+
+[NetworkBottomLine]
 Meter=IMAGE
-X=10
-Y=130
+X=(10+#Network_X#)
+Y=(130+#Network_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
@@ -43,8 +49,8 @@ CurrentPath=#CurrentPath#
 Msr=mNetworkUp
 FlipX=0
 FlipY=0
-Xstart=10
-Ystart=40
+Xstart=(10+#Network_X#)
+Ystart=(40+#Network_Y#)
 
 [mHistogramNetworkDown]
 Measure=Script
@@ -58,8 +64,8 @@ CurrentPath=#CurrentPath#
 Msr=mNetworkDown
 FlipX=1
 FlipY=1
-Xstart=10
-Ystart=90
+Xstart=(10+#Network_X#)
+Ystart=(90+#Network_Y#)
 
 [mNetworkUp]
 Measure=NetOut
@@ -121,32 +127,32 @@ Group=bars
 
 [InnerLine1]
 Meter=IMAGE
-X=10
-Y=70
+X=(10+#Network_X#)
+Y=(70+#Network_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
 
 [InnerLine2]
 Meter=IMAGE
-X=10
-Y=90
+X=(10+#Network_X#)
+Y=(90+#Network_Y#)
 W=280
 H=1
 SolidColor=255, 255, 255, 50
 
 [MiddleDivider]
 Meter=IMAGE
-X=150
-Y=70
+X=(150+#Network_X#)
+Y=(70+#Network_Y#)
 W=1
 H=20
 SolidColor=255, 255, 255, 50
 
 [UpLabel]
 Meter=STRING
-X=145
-Y=69
+X=(145+#Network_X#)
+Y=(69+#Network_Y#)
 FontColor=#Orange#
 StringStyle=NORMAL
 FontSize=12
@@ -158,8 +164,8 @@ Prefix="UP"
 
 [DownLabel]
 Meter=STRING
-X=155
-Y=69
+X=(155+#Network_X#)
+Y=(69+#Network_Y#)
 FontColor=#Teal#
 StringStyle=NORMAL
 FontSize=12
@@ -172,8 +178,8 @@ Prefix="DN"
 [NetworkUpMeasurement]
 Meter=STRING
 MeasureName=mHistogramNetworkUp
-X=100
-Y=69
+X=(100+#Network_X#)
+Y=(69+#Network_Y#)
 FontColor=#Orange#
 StringStyle=NORMAL
 FontSize=12
@@ -186,8 +192,8 @@ Postfix="K"
 [NetworkDownMeasurement]
 Meter=STRING
 MeasureName=mHistogramNetworkDown
-X=200
-Y=69
+X=(200+#Network_X#)
+Y=(69+#Network_Y#)
 FontColor=#Teal#
 StringStyle=NORMAL
 FontSize=12
@@ -200,8 +206,8 @@ Postfix="K"
 [SSIDMeasurement]
 Meter=STRING
 MeasureName=mSSID
-X=10
-Y=0
+X=(10+#Network_X#)
+Y=(0+#Network_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -214,8 +220,8 @@ Prefix="SSID  "
 [WifiQualityMeasurement]
 Meter=STRING
 MeasureName=mWifiSignal
-X=10
-Y=15
+X=(10+#Network_X#)
+Y=(15+#Network_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -228,8 +234,8 @@ Prefix="WiFi  "
 [mIPLANTextPrefix]
 Meter=STRING
 MeasureName=mIPLAN
-X=242
-Y=0
+X=(242+#Network_X#)
+Y=(0+#Network_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -240,8 +246,8 @@ Hidden=0
 
 [mIPLANTextSuffix]
 Meter=STRING
-X=290
-Y=0
+X=(290+#Network_X#)
+Y=(0+#Network_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12
@@ -251,11 +257,23 @@ AntiAlias=1
 Hidden=0
 Postfix="  LAN"
 
-[mIPWANText]
+[mIPWANTextPrefix]
 Meter=STRING
 MeasureName=mIPWAN
-X=290
-Y=15
+X=(242+#Network_X#)
+Y=(15+#Network_Y#)
+FontColor=#Gray#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=RIGHT
+FontFace=Helvetica Neue LT Std
+AntiAlias=1
+Hidden=0
+
+[mIPWANTextSuffix]
+Meter=STRING
+X=(290+#Network_X#)
+Y=(15+#Network_Y#)
 FontColor=#Gray#
 StringStyle=NORMAL
 FontSize=12

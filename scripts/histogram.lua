@@ -11,8 +11,8 @@ function Initialize()
 	direction = SELF:GetNumberOption('FlipX',0) == 1
 	flipY = SELF:GetNumberOption('FlipY',0) == 1
 	aggregate = SELF:GetNumberOption('Aggregate',1)
-	xStrt = SELF:GetOption('Xstart')
-	yStrt = SELF:GetOption('Ystart')
+	xStrt = SELF:GetNumberOption('Xstart')
+	yStrt = SELF:GetNumberOption('Ystart')
     meterWidth = SELF:GetNumberOption('Width',10) 
     barWidth = SELF:GetNumberOption('BarWidth',1)
     barStyle = SELF:GetOption('BarStyle')
