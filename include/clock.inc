@@ -61,7 +61,7 @@ LineStart=38
 StartAngle=4.7124
 RotationAngle=6.28
 AntiAlias=1
-LineColor=255, 2555, 255, 255
+LineColor=#AccentColor4#
 Solid=1
 
 ;analog minutes ring
@@ -75,7 +75,7 @@ LineStart=24
 StartAngle=4.7124
 RotationAngle=6.28
 AntiAlias=1
-LineColor=255, 2555, 255, 255
+LineColor=#AccentColor4#
 Solid=1
 Hidden=#HideAnalogMinutes#
 
@@ -90,7 +90,7 @@ LineStart=10
 StartAngle=4.7124
 RotationAngle=6.28
 AntiAlias=1
-LineColor=255, 2555, 255, 255
+LineColor=#AccentColor4#
 Solid=1
 Hidden=#HideAnalogHours#
 
@@ -151,7 +151,7 @@ Hidden=#HideAnalogMinutes#
 ;hours ring background
 [MeterAnalogBG5]
 Meter=ROUNDLINE
-X=(#RingXOffset#+#clock_X#))
+X=(#RingXOffset#+#clock_X#)
 Y=(#RingYOffset#+#clock_Y#)
 LineLength=22
 LineStart=10
@@ -206,20 +206,20 @@ MeasureName=MeasureTime
 Meter=STRING
 X=(106+#clock_X#)
 Y=(-5+#clock_Y#)
-FontColor=255, 255, 255, 255
+FontColor=#AccentColor4#
 FontSize=46
 StringAlign=LEFT
 StringStyle=BOLD
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 
 [MeterLine]
 Meter=IMAGE
 X=(120+#clock_X#)
 Y=(#RingYOffset#+#clock_Y#)
-W=165
+W=170
 H=5
-SolidColor=255, 255, 255, 200
+SolidColor=#AccentColor2#
 
 ;CALENDAR
 
@@ -241,9 +241,9 @@ X=(116+#clock_X#)
 Y=(78+#clock_Y#)
 StringStyle=NORMAL
 StringAlign=LEFT
-FontColor=255, 255, 255, 160
+FontColor=#AccentColor2#
 FontSize=12
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 
 [MeterWeekDay]
@@ -252,9 +252,9 @@ MeasureName=MeasureWeek
 X=(116+#clock_X#)
 Y=(98+#clock_Y#)
 W=300
-StringStyle=NORMAL
+StringStyle=BOLD
 StringAlign=LEFT
-FontColor=255, 255, 255, 217
+FontColor=#AccentColor2#
 FontSize=12
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1

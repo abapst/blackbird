@@ -1,6 +1,5 @@
 [Variables]
 HFlogo=#@#images\ship_badge.png
-logocolor=255,255,255,255
 art_ship_badge_X=0
 art_ship_badge_Y=0
 
@@ -33,7 +32,7 @@ H=170
 X=(65+#art_ship_badge_X#)
 Y=(55+#art_ship_badge_Y#)
 GreyScale=1
-ImageTint=#logocolor#
+ImageTint=#AccentColor4#
 
 [MeterBadgeRoundLine]
 Meter=ROUNDLINE
@@ -47,5 +46,5 @@ LineStart=90
 StartAngle=47.55
 RotationAngle=6.29
 AntiAlias=1
-LineColor=255, 255, 255, 255
+LineColor=#AccentColor4#
 Solid=1

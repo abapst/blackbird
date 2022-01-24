@@ -5,12 +5,10 @@ SkinHeight=140
 SkinWidth=300
 Gap=1
 BarWidth=2
-Orange=255,80,0,255
-Gray=200,200,200,255
-Teal=0,200,255,255
 White=255,255,255,255
 Network_X=0
 Network_Y=0
+BytesPerKb=1024
 
 [NetworkBackground]
 Meter=IMAGE
@@ -83,6 +81,28 @@ MaxValue=8192
 AverageSize=5
 UpdateDivider=#BarWidth# + #Gap#
 
+[MeasureNetUpFloating]
+Measure=NetOut
+Interface=Best
+MaxValue=1000000
+MinValue=0
+UpdateDivider=30
+
+[MeasureNetUpKb]
+Measure=Calc
+Formula=(MeasureNetUpFloating / #BytesPerKb#)
+
+[MeasureNetDownFloating]
+Measure=NetIn
+Interface=Best
+MaxValue=1000000
+MinValue=0
+UpdateDivider=30
+
+[MeasureNetDownKb]
+Measure=Calc
+Formula=(MeasureNetDownFloating / #BytesPerKb#)
+
 [mIPLAN]
 Measure=Plugin
 Plugin=SysInfo
@@ -110,7 +130,7 @@ Plugin=WiFiStatus
 WiFiInfoType=Quality
 
 [orangeBar]
-SolidColor=#Orange#
+SolidColor=#AccentColor1#
 X=#Gap#R
 Y=0
 W=#BarWidth#
@@ -118,7 +138,7 @@ H=#SkinHeight#
 Group=bars
 
 [tealBar]
-SolidColor=#Teal#
+SolidColor=#AccentColor3#
 X=#Gap#R
 Y=0
 W=#BarWidth#
@@ -153,11 +173,11 @@ SolidColor=255, 255, 255, 50
 Meter=STRING
 X=(145+#Network_X#)
 Y=(69+#Network_Y#)
-FontColor=#Orange#
+FontColor=#AccentColor1#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Prefix="UP"
@@ -166,81 +186,105 @@ Prefix="UP"
 Meter=STRING
 X=(155+#Network_X#)
 Y=(69+#Network_Y#)
-FontColor=#Teal#
+FontColor=#AccentColor3#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=LEFT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Prefix="DN"
 
 [NetworkUpMeasurement]
 Meter=STRING
-MeasureName=mHistogramNetworkUp
+MeasureName=MeasureNetUpKb
 X=(100+#Network_X#)
 Y=(69+#Network_Y#)
-FontColor=#Orange#
+FontColor=#AccentColor1#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Postfix="K"
 
 [NetworkDownMeasurement]
 Meter=STRING
-MeasureName=mHistogramNetworkDown
+MeasureName=MeasureNetDownKb
 X=(200+#Network_X#)
 Y=(69+#Network_Y#)
-FontColor=#Teal#
+FontColor=#AccentColor3#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=LEFT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Postfix="K"
 
-[SSIDMeasurement]
+[SSIDMeasurementPrefix]
 Meter=STRING
-MeasureName=mSSID
 X=(10+#Network_X#)
 Y=(0+#Network_Y#)
-FontColor=#Gray#
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=LEFT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Prefix="SSID  "
 
-[WifiQualityMeasurement]
+[SSIDMeasurementSuffix]
 Meter=STRING
-MeasureName=mWifiSignal
-X=(10+#Network_X#)
-Y=(15+#Network_Y#)
-FontColor=#Gray#
+MeasureName=mSSID
+X=(60+#Network_X#)
+Y=(0+#Network_Y#)
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=LEFT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
+AntiAlias=1
+Hidden=0
+
+[WifiQualityMeasurementPrefix]
+Meter=STRING
+X=(10+#Network_X#)
+Y=(15+#Network_Y#)
+FontColor=#AccentColor2#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=LEFT
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Prefix="WiFi  "
+
+[WifiQualityMeasurementSuffix]
+Meter=STRING
+MeasureName=mWifiSignal
+X=(60+#Network_X#)
+Y=(15+#Network_Y#)
+FontColor=#AccentColor2#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=LEFT
+FontFace=#MainFontFace#
+AntiAlias=1
+Hidden=0
 
 [mIPLANTextPrefix]
 Meter=STRING
 MeasureName=mIPLAN
 X=(242+#Network_X#)
 Y=(0+#Network_Y#)
-FontColor=#Gray#
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 
@@ -248,11 +292,11 @@ Hidden=0
 Meter=STRING
 X=(290+#Network_X#)
 Y=(0+#Network_Y#)
-FontColor=#Gray#
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Postfix="  LAN"
@@ -262,11 +306,11 @@ Meter=STRING
 MeasureName=mIPWAN
 X=(242+#Network_X#)
 Y=(15+#Network_Y#)
-FontColor=#Gray#
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 
@@ -274,11 +318,11 @@ Hidden=0
 Meter=STRING
 X=(290+#Network_X#)
 Y=(15+#Network_Y#)
-FontColor=#Gray#
+FontColor=#AccentColor2#
 StringStyle=NORMAL
 FontSize=12
 StringAlign=RIGHT
-FontFace=Helvetica Neue LT Std
+FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Postfix="  WAN"
