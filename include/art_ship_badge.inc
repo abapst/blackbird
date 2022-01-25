@@ -31,14 +31,14 @@ ImageName=#HFlogo#
 W=130
 H=130
 X=(85+#art_ship_badge_X#)
-Y=(75+#art_ship_badge_Y#)
+Y=(65+#art_ship_badge_Y#)
 GreyScale=1
 ImageTint=#AccentColor4#
 
 [MeterBadgeRoundLine]
 Meter=ROUNDLINE
 X=(50+#art_ship_badge_X#)
-Y=(40+#art_ship_badge_Y#)
+Y=(30+#art_ship_badge_Y#)
 W=200
 H=200
 LineWidth=7.0
@@ -56,6 +56,6 @@ ImageName=#LaurelImg#
 W=240
 H=210
 X=(30+#art_ship_badge_X#)
-Y=(38+#art_ship_badge_Y#)
+Y=(28+#art_ship_badge_Y#)
 GreyScale=1
 ImageTint=#AccentColor4#
