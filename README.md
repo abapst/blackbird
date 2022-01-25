@@ -1,3 +1,5 @@
+![desktop](https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/desktop.jpg)
+
 # Blackbird
 
 My personal rainmeter setup.
@@ -8,8 +10,6 @@ I wasn't satisfied with a lot of the jerky-looking animated meters out there and
 <p align="center">
 <img src="https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/blackbird_animation.gif" width="350" height="550" />
 </p>
-
-![desktop](https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/desktop.jpg)
 
 ## Requirements
 
