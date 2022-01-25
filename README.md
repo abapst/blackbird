@@ -2,7 +2,7 @@
 
 # Blackbird
 
-<img align="right" src="https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/blackbird_animation.gif" width="250" height="450" />
+<img align="right" src="https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/blackbird_animation.gif" width="350" height="550" />
 
 My personal rainmeter setup.
 Inspired by the look of the amazing [Enigma](https://github.com/kaelri/enigma) by Kaelri, but all code and resources belong to me.
