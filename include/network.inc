@@ -108,7 +108,7 @@ Measure=Plugin
 Plugin=SysInfo
 SysInfoType=IP_ADDRESS
 SysInfoData=1
-UpdateDivider=#BarWidth# + #Gap#
+UpdateDivider=300
 
 [mIPWAN]
 Measure=Plugin
@@ -117,17 +117,19 @@ Url=http://checkip.dyndns.org
 StringIndex=1
 RegExp="(?siU)Address: (.*)</body>"
 Substitute="":"N/A"
-UpdateDivider=#BarWidth# + #Gap#
+UpdateDivider=300
 
 [mSSID]
 Measure=Plugin
 Plugin=WiFiStatus
 WiFiInfoType=SSID
+UpdateDivider=300
 
 [mWifiSignal]
 Measure=Plugin
 Plugin=WiFiStatus
 WiFiInfoType=Quality
+UpdateDivider=300
 
 [orangeBar]
 SolidColor=#AccentColor1#
