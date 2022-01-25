@@ -2,14 +2,12 @@
 
 # Blackbird
 
+<img align="right" src="https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/blackbird_animation.gif" width="350" height="550" />
+
 My personal rainmeter setup.
 Inspired by the look of the amazing [Enigma](https://github.com/kaelri/enigma) by Kaelri, but all code and resources belong to me.
 
 I wasn't satisfied with a lot of the jerky-looking animated meters out there and wanted something smoother looking so I developed this. The CPU usage is not great due to the refresh rate of the histogram skins and I probably would not run this on a laptop.
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/blackbird_animation.gif" width="350" height="550" />
-</p>
 
 ## Requirements
 
