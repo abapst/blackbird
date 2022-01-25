@@ -242,7 +242,7 @@ Y=(78+#clock_Y#)
 StringStyle=NORMAL
 StringAlign=LEFT
 FontColor=#AccentColor2#
-FontSize=12
+FontSize=#MainFontSizeText#
 FontFace=#MainFontFace#
 AntiAlias=1
 
@@ -255,6 +255,6 @@ W=100
 StringStyle=BOLD
 StringAlign=LEFT
 FontColor=#AccentColor2#
-FontSize=12
+FontSize=#MainFontSizeText#
 FontFace=#MainFontFace#
 AntiAlias=1

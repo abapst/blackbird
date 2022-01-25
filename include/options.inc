@@ -1,5 +1,6 @@
 [Variables]
 MainFontFace=Helvetica Neue
+MainFontSizeText=11
 
 ;Colors
 AccentColor1=255,80,0,255

@@ -29,7 +29,7 @@ X=(0+#art_three_bars_X#)
 Y=(30+#art_three_bars_Y#)
 W=300
 H=25
-SolidColor=255, 255, 255, 255
+SolidColor=#AccentColor4#
 
 [MeterLine2]
 Meter=IMAGE
