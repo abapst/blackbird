@@ -63,6 +63,11 @@ FlipY=1
 Xstart=(10+#CPU_X#)
 Ystart=(90+#CPU_Y#)
 
+[mCPUTotal]
+Measure=CPU
+UpdateDivider=30
+Processor=0
+
 [mCPU1]
 Measure=CPU
 UpdateDivider=#BarWidth# + #Gap#
@@ -197,9 +202,35 @@ AntiAlias=1
 Hidden=0
 Postfix="%"
 
-[RAMMeasurement]
+[CPUTotalMeasurementPrefix]
 Meter=STRING
-MeasureName=MeasureUsedRAMPercent
+X=(10+#CPU_X#)
+Y=(0+#CPU_Y#)
+FontColor=#AccentColor2#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=LEFT
+FontFace=#MainFontFace#
+AntiAlias=1
+Hidden=0
+Prefix="CPU Total  "
+
+[CPUTotalMeasurementSuffix]
+Meter=STRING
+MeasureName=mCPUTotal
+X=(90+#CPU_X#)
+Y=(0+#CPU_Y#)
+FontColor=#AccentColor2#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=LEFT
+FontFace=#MainFontFace#
+AntiAlias=1
+Hidden=0
+Postfix="%"
+
+[RAMMeasurementPrefix]
+Meter=STRING
 X=(10+#CPU_X#)
 Y=(15+#CPU_Y#)
 FontColor=#AccentColor2#
@@ -210,6 +241,19 @@ FontFace=#MainFontFace#
 AntiAlias=1
 Hidden=0
 Prefix="RAM  "
+
+[RAMMeasurementSuffix]
+Meter=STRING
+MeasureName=MeasureUsedRAMPercent
+X=(90+#CPU_X#)
+Y=(15+#CPU_Y#)
+FontColor=#AccentColor2#
+StringStyle=NORMAL
+FontSize=12
+StringAlign=LEFT
+FontFace=#MainFontFace#
+AntiAlias=1
+Hidden=0
 Postfix="%"
 
 [BatteryMeasurement]

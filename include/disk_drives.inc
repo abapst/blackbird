@@ -86,13 +86,15 @@ Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#C_DISK.png
 LeftMouseDownAction=!Execute ["C:\"]
+MouseOverAction=[!SetOption MeterlabelCDisk StringStyle BOLD][!UpdateMeter MeterlabelCDisk][!Redraw]
+MouseLeaveAction=[!SetOption MeterlabelCDisk StringStyle NORMAL][!UpdateMeter MeterlabelCDisk][!Redraw]
 
 [MeterlabelCDISK]
 Meter=STRING
-X=(10+#DiskDrives_X#)
+X=(11+#DiskDrives_X#)
 Y=(94+#DiskDrives_Y#)
 FontColor=#AccentColor4#
-StringStyle=BOLD
+StringStyle=NORMAL
 FontSize=12
 StringAlign=LEFT
 FontFace=#MainFontFace#
@@ -107,10 +109,12 @@ Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#D_DISK.png
 LeftMouseDownAction=!Execute ["D:\"]
+MouseOverAction=[!SetOption MeterlabelDDisk StringStyle BOLD][!UpdateMeter MeterlabelDDisk][!Redraw]
+MouseLeaveAction=[!SetOption MeterlabelDDisk StringStyle NORMAL][!UpdateMeter MeterlabelDDisk][!Redraw]
 
 [MeterlabelDDISK]
 Meter=STRING
-X=(110+#DiskDrives_X#)
+X=(111+#DiskDrives_X#)
 Y=(94+#DiskDrives_Y#)
 FontColor=#AccentColor4#
 StringStyle=NORMAL
@@ -128,10 +132,12 @@ Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#E_DISK.png
 LeftMouseDownAction=!Execute ["E:\"]
+MouseOverAction=[!SetOption MeterlabelEDisk StringStyle BOLD][!UpdateMeter MeterlabelEDisk][!Redraw]
+MouseLeaveAction=[!SetOption MeterlabelEDisk StringStyle NORMAL][!UpdateMeter MeterlabelEDisk][!Redraw]
 
 [MeterlabelEDISK]
 Meter=STRING
-X=(210+#DiskDrives_X#)
+X=(211+#DiskDrives_X#)
 Y=(94+#DiskDrives_Y#)
 FontColor=#AccentColor4#
 StringStyle=NORMAL
