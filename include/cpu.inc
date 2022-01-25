@@ -22,8 +22,8 @@ X=#CPU_X#
 Y=#CPU_Y#
 
 ;These includes must happen after the background meter is drawn so they are drawn on top
-@Include1=#CurrentPath#temp\temp_mHistogramCPU1.inc
-@Include2=#CurrentPath#temp\temp_mHistogramCPU2.inc
+@Include1=#CurrentPath#temp_mHistogramCPU1.inc
+@Include2=#CurrentPath#temp_mHistogramCPU2.inc
 
 [CPUBottomLine]
 Meter=IMAGE

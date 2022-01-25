@@ -38,8 +38,7 @@ function Initialize()
 
 	-- Create temp meter file if it doesn't exist
     currentPath = SELF:GetOption('CurrentPath')
-	os.execute("mkdir " .. currentPath .. '\\temp')
-	tempFile = currentPath .. '\\temp\\temp_' .. meterName .. '.inc'
+	tempFile = currentPath .. '\\temp_' .. meterName .. '.inc'
 	local f = io.open(tempFile, 'w')
 	f:close()
 

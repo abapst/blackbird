@@ -24,8 +24,8 @@ X=#Network_X#
 Y=#Network_Y#
 
 ;These includes must happen after the background meter is drawn so they are drawn on top
-@Include1=#CurrentPath#temp\temp_mHistogramNetworkUp.inc
-@Include2=#CurrentPath#temp\temp_mHistogramNetworkDown.inc
+@Include1=#CurrentPath#temp_mHistogramNetworkUp.inc
+@Include2=#CurrentPath#temp_mHistogramNetworkDown.inc
 
 [NetworkBottomLine]
 Meter=IMAGE
