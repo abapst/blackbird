@@ -28,10 +28,10 @@ SolidColor=255, 255, 255, 50
 [MeterBadgeLogo]
 Meter=Image
 ImageName=#HFlogo#
-W=100
-H=100
-X=(100+#art_ship_badge_X#)
-Y=(80+#art_ship_badge_Y#)
+W=160
+H=160
+X=(70+#art_ship_badge_X#)
+Y=(50+#art_ship_badge_Y#)
 GreyScale=1
 ImageTint=#AccentColor4#
 
@@ -42,20 +42,20 @@ Y=(40+#art_ship_badge_Y#)
 W=180
 H=180
 LineWidth=7.0
-LineLength=61
-LineStart=56
+LineLength=99
+LineStart=91
 StartAngle=47.55
 RotationAngle=6.29
 AntiAlias=1
 LineColor=#AccentColor4#
 Solid=1
 
-[MeterBadgeLaurelLogo]
-Meter=Image
-ImageName=#LaurelImg#
-W=190
-H=166
-X=(54+#art_ship_badge_X#)
-Y=(50+#art_ship_badge_Y#)
-GreyScale=1
-ImageTint=#AccentColor4#
+;[MeterBadgeLaurelLogo]
+;Meter=Image
+;ImageName=#LaurelImg#
+;W=190
+;H=166
+;X=(54+#art_ship_badge_X#)
+;Y=(50+#art_ship_badge_Y#)
+;GreyScale=1
+;ImageTint=#AccentColor4#
