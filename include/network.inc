@@ -113,7 +113,7 @@ UpdateDivider=300
 [mIPWAN]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
-Url=http://checkip.dyndns.org
+;Url=http://checkip.dyndns.org
 StringIndex=1
 RegExp="(?siU)Address: (.*)</body>"
 Substitute="":"N/A"
