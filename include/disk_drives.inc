@@ -2,9 +2,9 @@
 Drive1=C
 Drive2=D
 Drive3=E
-Drive1Label=SYSTEM
-Drive2Label=STORAGE
-Drive3Label=BACKUP
+Drive1Label=#FolderLabel0#
+Drive2Label=#FolderLabel1#
+Drive3Label=#FolderLabel2#
 ASSETS=#@#images\
 DiskDrives_X=0
 DiskDrives_Y=0
@@ -85,7 +85,7 @@ X=(25+#DiskDrives_X#)
 Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#C_DISK.png
-LeftMouseDownAction=!Execute ["C:\"]
+LeftMouseDownAction=!Execute [#FolderLabel0Path#]
 MouseOverAction=[!SetOption MeterlabelCDisk StringStyle BOLD][!UpdateMeter MeterlabelCDisk][!Redraw]
 MouseLeaveAction=[!SetOption MeterlabelCDisk StringStyle NORMAL][!UpdateMeter MeterlabelCDisk][!Redraw]
 
@@ -108,7 +108,7 @@ X=(125+#DiskDrives_X#)
 Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#D_DISK.png
-LeftMouseDownAction=!Execute ["D:\"]
+LeftMouseDownAction=!Execute [#FolderLabel1Path#]
 MouseOverAction=[!SetOption MeterlabelDDisk StringStyle BOLD][!UpdateMeter MeterlabelDDisk][!Redraw]
 MouseLeaveAction=[!SetOption MeterlabelDDisk StringStyle NORMAL][!UpdateMeter MeterlabelDDisk][!Redraw]
 
@@ -131,7 +131,7 @@ X=(225+#DiskDrives_X#)
 Y=(10+#DiskDrives_Y#)
 SolidColor=0,0,0,1
 ButtonImage=#ASSETS#E_DISK.png
-LeftMouseDownAction=!Execute ["E:\"]
+LeftMouseDownAction=!Execute [#FolderLabel2Path#]
 MouseOverAction=[!SetOption MeterlabelEDisk StringStyle BOLD][!UpdateMeter MeterlabelEDisk][!Redraw]
 MouseLeaveAction=[!SetOption MeterlabelEDisk StringStyle NORMAL][!UpdateMeter MeterlabelEDisk][!Redraw]
 
