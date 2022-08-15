@@ -13,6 +13,11 @@ I wasn't satisfied with a lot of the jerky-looking animated meters out there and
 
 You need to install [Rainmeter](https://www.rainmeter.net/) for Windows 10.
 
+If you want to use the cpu_temperature meter, you will also need to install
+the Core Temp tool and run it in the background, located [here](https://www.alcpu.com/CoreTemp/).
+
+![core_temperature](https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/core_temperature.jpg)
+
 ## Installation
 
 1. Clone repo into your Documents\Rainmeter\Skins folder.
