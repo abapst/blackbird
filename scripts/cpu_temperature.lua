@@ -11,7 +11,7 @@ function Update()
 
 	if (currentValue >= 80) then
 		SKIN:Bang('!SetOption',MeterName,'FontColor','255,0,0,255')
-	elseif (currentValue >= 70) then
+	elseif (currentValue >= 50) then
 		SKIN:Bang('!SetOption',MeterName,'FontColor','255,80,0,255')
 	else
 		SKIN:Bang('!SetOption',MeterName,'FontColor','0,200,255,255')
