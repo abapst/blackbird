@@ -17,9 +17,9 @@ If you want to use the cpu_temperature meter, you will also need to install
 the [Core Temp](https://www.alcpu.com/CoreTemp/) tool and run it in the background.
 
 There are 3 different cpu temp meters available, depending on the number of cores you have:
-    - cpu_temperature_4_cores
-    - cpu_temperature_8_cores
-    - cpu_temperature_12_cores
+- cpu_temperature_4_cores
+- cpu_temperature_8_cores
+- cpu_temperature_12_cores
 
 ![core_temperature](https://raw.githubusercontent.com/abapst/blackbird/main/.github/images/core_temperature.jpg)
 
